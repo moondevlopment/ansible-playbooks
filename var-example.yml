@@ -1,0 +1,11 @@
+---
+- name: Build a Webserver
+  hosts: all
+  become: yes
+  tasks:
+    - name: just messsage
+      shell: "echo time to leave"
+      register: message
+
+    - debug:
+        msg: "{{ message.stdout }}"
