@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   tasks:
-    - name: just messsage
+    - name: just message
       shell: "echo time to leave"
       register: message
 
