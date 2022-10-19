@@ -1,0 +1,30 @@
+---
+- name: Test Variables
+  hosts: ansible-client1
+  become: yes
+  vars:
+     my_name: "john smith"  # this is a string value, to metion string use double qoutes
+  vars_files:
+     myvars.yml
+  tasks:
+ 
+    - name: List the content of /tmp
+      shell: ls /tmp
+      register: ls_output
+
+    - name: Display value of ls_output
+      debug:
+        msg: "{{ my_name }}"
+
+
+    - name: Installing {{ pkg_name }}
+      yum:
+        name: "{{ pkg_name }}"
+        state: latest
+     
+        
+
+
+
+
+...

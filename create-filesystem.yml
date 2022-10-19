@@ -1,7 +1,7 @@
 ---
 - name: Create a filesystem using partition
   hosts: all
-  become: yes
+  become: yes # esclate privilege to sudo
   vars:
     dev_name: ""
   tasks:
