@@ -1,0 +1,33 @@
+---
+- name: Create a filesystem using partition
+  hosts: all
+  become: yes
+  vars:
+    dev_name: ""
+  tasks:
+    - name: to create a partition
+      parted:
+        device: /dev/{{ dev_name }}
+        number: 1
+        state: present
+        
+      
+
+    - name: to create filesystem
+      filesystem:
+        device: /dev/{{ dev_name }}1
+        fstype: xfs
+
+    - name: create mountpoint directory
+      file:
+        path: /mnt/test1
+        state: directory
+
+    - name: mount the filesystem and add entry into fstab
+      mount:
+        path: /mnt/test1
+        src: /dev/{{ dev_name }}1
+        fstype: xfs
+        state: present
+        state: mounted
+...

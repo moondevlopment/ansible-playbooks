@@ -1,0 +1,20 @@
+---
+- name: Delete filesystem and partition
+  hosts: all
+  become: yes
+  vars:
+    dev_name: ""
+  tasks:
+    - name: Unmount filesystem and remove entry from fstab
+      mount:
+        path: /mnt/test1
+        src: /dev/{{ dev_name }}1
+        state: unmounted
+        state: absent
+
+    - name: Delete partition
+      parted:
+        device: /dev/{{ dev_name }}
+        number: 1
+        state: absent
+        
