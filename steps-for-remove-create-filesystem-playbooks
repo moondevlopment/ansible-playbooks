@@ -1,5 +1,6 @@
 1. # When you run create-filesystem.yml or remove-filesystem.yml run below command
    # these playbook required a variable dev_name value as disk name
+   # Below is the example of how to execute these playbooks
 
 Example:
    ansible-playbook create-filesystem.yml -e 'dev_name=sdb'
