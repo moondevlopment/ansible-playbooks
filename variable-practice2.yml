@@ -1,0 +1,36 @@
+---
+- name: Variable Practice By creating User
+  hosts: ansible-client1
+  become: yes
+  vars:
+    user_name: "tom"
+    shell_name: "/bin/bash"
+    user_home: "/home" 
+  tasks:
+    - name: Print the output of variables
+      debug:
+        msg: "user name is {{ user_name }} and group name is {{ user_home }}"
+
+    - name: create user {{ user_name }}
+      user:
+        name: "{{ user_name }}"
+        shell: "{{ shell_name }}"
+        home: "{{ user_home }}/{{ user_name }}"
+        state: present
+
+    - name: validate {{ user_name }} 
+      shell: id "{{ user_name }}"
+      register: id_output        # to store command output into variable
+
+    - name: Print the output of id command
+      debug:
+        msg: "{{ id_output }}"
+
+
+
+
+
+
+
+      
+      
