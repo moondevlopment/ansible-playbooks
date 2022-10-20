@@ -4,7 +4,7 @@
   become: yes
   vars:
      my_name: "john smith"  # this is a string value, to metion string use double qoutes
-  vars_files:
+  vars_files:               # Instead of defining Variables inside play we can define them in separate file and metion that file in a play
      myvars.yml
   tasks:
  
