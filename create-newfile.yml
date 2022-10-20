@@ -1,0 +1,17 @@
+---
+- name: my-file
+  hosts: all
+  tasks:
+    - name: create a directory
+      file:
+        path: /tmp/my-dir
+        state: directory
+        mode: 0755
+    - name: creating a file
+      file:
+        path: /tmp/my-dir/fruits
+        state: touch
+        mode: 0644
+
+    - name: validate directory
+      user: ls -ld /tmp/my-dir
