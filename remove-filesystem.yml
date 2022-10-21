@@ -17,4 +17,3 @@
         device: /dev/{{ dev_name }}
         number: 1
         state: absent
-        
