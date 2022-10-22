@@ -1,0 +1,14 @@
+---
+- name: Check custom facts
+  hosts: all
+  tasks:
+    - name: show available custom facts
+      debug:
+        msg: "{{ ansible_local.sys.environment.env }}"
+
+    - name: Create directory
+      when: ansible_local.sys.environment.env == "test"
+      file:
+        path: /tmp/newdir2
+        state: directory
+  

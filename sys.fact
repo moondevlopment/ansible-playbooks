@@ -1,0 +1,6 @@
+[environment]
+
+env= test
+
+server_type= database
+

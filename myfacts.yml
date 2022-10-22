@@ -1,0 +1,23 @@
+- name: 
+  hosts: all
+  become: yes
+  vars:
+    state: ""
+    pkg: ""
+  tasks:
+    - name: install software
+      when: state == "install"
+      yum:
+        name: "{{ pkg }}"
+        state: present
+    
+    - name: uninstall software
+      when: state == "uninstall"
+      yum:
+        name: "{{ pkg }}"
+        state: absent
+
+     
+
+      
+         

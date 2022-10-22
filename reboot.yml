@@ -1,0 +1,8 @@
+---
+- hosts: 10.0.0.31
+  gather_facts: False
+  become: yes
+  tasks:
+    - name: Check
+      reboot:
+        reboot_timeout: 200

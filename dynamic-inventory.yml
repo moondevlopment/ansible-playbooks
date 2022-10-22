@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Run Dynamic inventory script
+      shell: bash dynamic.sh
+- name: Create Files/directory
+  hosts: all
+  tasks:
+    - name: Create a file
+      file:
+        path: /tmp/file2
+        state: touch

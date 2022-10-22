@@ -1,0 +1,29 @@
+---
+- name: Check facts
+  gather_facts: yes
+  hosts: all
+  become: yes
+  tasks:
+   
+   #- file:
+   #    path: /etc/ansible/facts.d
+   #    state: directory
+   #- copy:
+   #    src: sys.fact
+   #    dest: /etc/ansible/facts.d/
+      
+    - debug:
+       msg: "yes this is centos and prod"
+      when: ansible_distribution|lower == "centos" and ansible_facts.ansible_local.sys.environment.env == "prod"
+
+
+    - reboot:
+        reboot_timeout: 300
+        
+      when: ansible_distribution|lower == "centos" and ansible_facts.ansible_local.sys.environment.env == "test"
+
+
+    
+
+    
+  
